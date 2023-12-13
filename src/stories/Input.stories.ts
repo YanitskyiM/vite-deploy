@@ -6,6 +6,9 @@ import { Input } from './Input.tsx';
 const meta = {
     title: 'Example/Input',
     component: Input,
+    argTypes:{
+        type:{control: "select" }
+    }
 } satisfies Meta<typeof Input>;
 
 export default meta;
@@ -15,11 +18,14 @@ type Story = StoryObj<typeof meta>;
 export const InputText: Story = {
     args: {
         type: 'text',
+        title: 'Name',
+        placeholder:'John Smith'
     },
 };
 
 export const InputPassword: Story = {
     args: {
         type: 'password',
+        title: 'Password',
     },
 };

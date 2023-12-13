@@ -1,20 +1,14 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from "@storybook/react";
+import "../index.css";
 
-import { Button } from './Button';
+import { Button } from "../Components/Basic/Button.tsx";
 
-// More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 const meta = {
-  title: 'Example/Button',
+  title: "Example/Button",
   component: Button,
-  parameters: {
-    // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/configure/story-layout
-    layout: 'centered',
-  },
-  // This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/writing-docs/autodocs
-  tags: ['autodocs'],
-  // More on argTypes: https://storybook.js.org/docs/api/argtypes
   argTypes: {
-    backgroundColor: { control: 'color' },
+      theme:{control: "select",  options: ['primary', 'outline', 'link']},
+      size:{control: "select",  options: ['sm','md', 'lg']},
   },
 } satisfies Meta<typeof Button>;
 
@@ -22,29 +16,26 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 // More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
-export const Primary: Story = {
+export const ButtonPrimary: Story = {
   args: {
-    primary: true,
-    label: 'Button',
+    theme: "primary",
+    size: "md",
+    children: "Submit",
   },
 };
 
-export const Secondary: Story = {
+export const ButtonOutline: Story = {
   args: {
-    label: 'Button',
+    theme: "outline",
+    size: "md",
+    children: "Story",
   },
 };
 
-export const Large: Story = {
+export const ButtonLink: Story = {
   args: {
-    size: 'large',
-    label: 'Button',
-  },
-};
-
-export const Small: Story = {
-  args: {
-    size: 'small',
-    label: 'Button',
+    theme: "link",
+    size: "md",
+    children: "Story",
   },
 };
